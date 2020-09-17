@@ -1,0 +1,24 @@
+.item{
+    display: flexbox;
+    flex-direction: row important!;
+    border: 2px black;
+}
+.quantityPicker, .btn {
+    display: inline-block;
+    margin: 0.4em;
+}
+h5, h6{
+    display: inline-block;
+    color: limegreen;
+}
+h5{
+    color: lightyellow;
+}
+h6{
+    color: limegreen;
+    margin-left: 20px;
+}
+img{
+    justify-content: center;
+    width: 20rem;
+}
