@@ -2,7 +2,7 @@ import React from "react";
 
 import "./App.css";
 import NavBar from './components/navBar';
-import QuantitiyPicker from "./components/QuantitiyPicker";
+//import QuantitiyPicker from "./components/QuantitiyPicker";
 import Catalog from './components/catalog';
 //import Todo from "./components/todo";
 import Footer from './components/Footer';
@@ -17,15 +17,12 @@ function App() {
       <div className="App container-fluid">
         <h1>Hello React!!</h1>
     <Catalog></Catalog>
-
-    
-
+ 
     </div>
     
-  
+  <Footer>
 
-    <Footer>
-    </Footer>
+  </Footer>
     </React.Fragment>
   );
 }

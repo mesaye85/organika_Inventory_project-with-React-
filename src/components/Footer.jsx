@@ -4,7 +4,8 @@ class Footer extends Component {
     state = {  }
     render() { 
         return (
-            <h4>Organika Mesaye Addisu</h4>
+           
+<footer className="footer"><h4>Organika Mesaye Addisu</h4></footer>
           
         );    
     

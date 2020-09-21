@@ -1,8 +1,5 @@
-.item{
-    display: flexbox;
-    flex-direction: row important!;
-    border: 2px black;
-}
+
+
 .quantityPicker, .btn {
     display: inline-block;
     margin: 0.4em;
@@ -12,6 +9,7 @@ h5, h6{
     color: limegreen;
 }
 h5{
+    margin-left: 10px;
     color: lightyellow;
 }
 h6{
@@ -19,6 +17,38 @@ h6{
     margin-left: 20px;
 }
 img{
-    justify-content: center;
+   display: inline-block;
     width: 20rem;
+    height: auto;
 }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(224, 225, 226);
+    text-align: center;
+  }
+  .catagory{
+      display: inline-block;
+      width: 30rem;
+      height: auto;
+      padding: 10px 10px 10px 0;
+      border: 1px solid grey;
+      background-color: lightblue;
+
+  }
+  .catagory h6{
+      word-wrap: bread-word;
+      font-weight: bold;
+      color: lightcyan;
+  }
+  .catagory:hover {
+      color: darkgray;
+      cursor: pointer;
+   
+  }
+  .products  {
+      text-align: center;
+  }
