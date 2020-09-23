@@ -16,11 +16,11 @@ h6{
     color: limegreen;
     margin-left: 20px;
 }
-img{
+/*img{
    display: inline-block;
     width: 20rem;
     height: auto;
-}
+}*/
 
 .footer {
     position: fixed;

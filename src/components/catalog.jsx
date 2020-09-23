@@ -11,16 +11,12 @@ class Catalog extends Component {
         selectedCatagory: ""
      }
     render() { 
-
-        /*
-         *if selectedCatagory is not
-         filter items to Display
-         itemsToDisplay = itemsTodisplay.filter
-         MDN array filter
-         
-         */
-
         let itemsToDisplay = this.state.items
+
+        if (this.state.selectedCatagory){
+            itemsToDisplay = itemsToDisplay.filter((item) => item.category === this.state.selectedCatagory);
+        }
+
         return ( 
             <div className="catalog-page">
                 <h2>Our amazing catalog</h2>
@@ -29,7 +25,7 @@ class Catalog extends Component {
                    
                     <div>
                     { this.state.catagories.map((catagory)=> (
-                    <div className="catagory" 
+                    <div className={this.getCatagoryClass(catagory)}
                     key={catagory} 
                     onClick={() => this.selectedCatagory(catagory)}> 
                     <h6>{catagory}</h6>
@@ -49,10 +45,18 @@ class Catalog extends Component {
             </div>
         );
                     }
+                    getCatagoryClass = (catName) => {
+                        let catClass = "catagory";
+                        if (catName === this.state.selectedCatagory){
+                            catClass += "active-cat";
+                        } 
+                    return "catClass";
+                };
+
 
 selectedCatagory = (catName) => {
  this.setState({selectedCatagory: catName});
-}
+};
          
         
          componentDidMount() {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import QuantitiyPicker from './QuantitiyPicker';
 import "./item.css";
 
+
 class Item extends Component {
     state = {
         minimum: this.props.product.minimum || 1 ,
