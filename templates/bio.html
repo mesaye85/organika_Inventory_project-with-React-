@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>MyBio - {{name}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="color-scheme" content="light only" />
+		<meta name="description" content="myBio - View {{name}}'s profile" />
+		<meta property="og:site_name" content="myBio - {{name}}" />
+		<meta property="og:title" content="myBio - {{name}}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="TEST" />
+		<link href="https://fonts.googleapis.com/css?display=swap&family=Inter:600,600italic,500,500italic" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="{{ url_for('static', filename='assets/icon.png') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename='assets/noscript.css') }}" /></noscript>
+    
+	</head>
+	<body class="is-loading">
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<div id="container01" class="container columns full">
+						<div class="wrapper">
+							<div class="inner">
+								<div>
+									<div id="image05" class="image">
+										<span class="frame"><img class='image' src="{{pfp}}" alt="" /></span>
+									</div>
+								</div>
+								<div>
+									<a style='text-decoration: none' href='{{replit_bio}}'><h2 id="text45">{{name}}</h2></a>
+									<h2 id="text02"><span class="p">{% if location != none %}{{location}}<br />{%endif%}{{followers}} Followers<br />{{profileviews}} Bio Views</span></h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="container02" class="container default full">
+						<div class="wrapper">
+							<div class="inner">
+								<p id="text46">{{text}}</p>
+                {% if website != False %}
+								<ul id="buttons01" class="buttons">
+									<li>
+										<a href="{{website}}" class="button n01"><i class="fa-solid fa-globe"></i><span class="label">&nbsp; &nbsp; View my website!</span></a>
+									</li>
+								</ul>
+                {% endif %}
+							</div>
+						</div>
+					</div>
+					<ul id="icons07" class="icons">
+						{% if website != False %}<li>
+							<a class="n01" style="text-decoration: none;" href="{{website}}" aria-label="Link">
+								<i class="fa-solid fa-globe"></i>
+								<span class="label">Link</span>
+							</a>
+						</li>
+            {%endif%}
+            {% if twitter != False %}
+            <li>
+							<a class="n03" style="text-decoration: none;" href="{{twitter}}" aria-label="Twitter">
+								<i class="fa-brands fa-twitter"></i>
+								<span class="label">Twitter</span>
+							</a>
+						</li>
+            {%endif%}
+            {% if linkedin != False %}
+            <li>
+							<a class="n04" style="text-decoration: none;" href="{{linkedin}}" aria-label="LinkedIn">
+								<i class="fa-brands fa-linkedin-in"></i>
+								<span class="label">LinkedIn</span>
+							</a>
+						</li>
+            {%endif%}
+            {% if youtube != False %}
+            <li>
+							<a class="n05" style="text-decoration: none;" href="{{youtube}}" aria-label="YouTube">
+								<i class="fa-brands fa-youtube"></i>
+								<span class="label">YouTube</span>
+							</a>
+						</li>
+            {%endif%}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="{{ url_for('static', filename='assets/main.js') }}"></script>
+    <script src="https://kit.fontawesome.com/a642b9675a.js" crossorigin="anonymous"></script>
+	</body>
+</html>
