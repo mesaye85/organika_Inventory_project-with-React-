@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Organika
 
-## Available Scripts
+A small React grocery storefront: a product catalog with quantity pickers, a to-do page, and placeholder home and cart pages.
 
-In the project directory, you can run:
+## Context
 
-### `npm start`
+I built this in September 2020 while learning React in a class; the commit messages ("assinment 2", "session 4", "review") follow the sessions. The earlier snapshot in [FSDI-108](https://github.com/mesaye85/FSDI-108) shows where it started. Despite the repo name, it has no inventory management.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Stack
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- React 16.13, Create React App (react-scripts 3.4.3)
+- react-router-dom 5.2
+- Bootstrap 3.4.1 from npm (the markup uses Bootstrap 4 class names), Font Awesome 4 icons
+- reactstrap 8.6 is installed but not used
 
-### `npm test`
+## Running it
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install
+npm install --no-save font-awesome@4.7.0
+NODE_OPTIONS=--openssl-legacy-provider npm start
+```
 
-### `npm run build`
+The second line is needed because `src/components/navBar.jsx` imports Font Awesome, which was never added to `package.json`. The OpenSSL flag is needed on Node 17 and later because react-scripts 3.x uses webpack 4. With both, it compiles on Node 22 (checked October 2026). Open http://localhost:3000/catalog; the home route shows only the navbar and footer (see below).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Status
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Archived. Not maintained.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Known gaps
 
-### `npm run eject`
+- `package.json` is missing `font-awesome`, so a clean install fails to build.
+- `src/App.js` line 26 passes `Home` to `exact` instead of `component`, so `/` renders no page content. The brand link goes to `/home` (`src/components/navBar.jsx` line 15), which has no route. The cart badge is a hardcoded `16` (line 54).
+- `src/components/item.jsx` lines 25-28 write the `QuantitiyPicker` props as child text, so `minimum` and `onValueChange` never arrive. Clicking + throws a TypeError and the item total never updates. `QuantitiyPicker.jsx` line 26 also reads `this.state.Quantity` (capital Q).
+- Each item shows the heading "Products" instead of its title, and every image has `alt="Product"` (`item.jsx` lines 18-19).
+- `src/components/catalog.jsx` collects `item.catagory` (line 76) instead of `item.category`, so the category filter renders empty boxes. `getCatagoryClass` returns the string `"catClass"` instead of the variable (line 53), and `setState` is called inside the loop (line 78).
+- `src/components/todo.jsx`: the Add button has no `onClick` (line 20), so `addTodo` never runs. List items have no `key`.
+- Product data is a hardcoded array in `src/services/itemService.js`, and two products share `img-15.jpg`. Nothing persists, and the cart page is a placeholder.
+- Bootstrap 3 is installed but the components use Bootstrap 4 classes (`navbar-expand-lg`, `nav-item`, `mr-auto`, `btn-outline-success`), so much of that styling doesn't apply. `src/components/item.css` styles global `h5`/`h6` (light yellow on white) and other components' classes.
+- `public/images` has 57 files; the product data uses 7. `public/Nike Shoes.jpeg` is unused too.
+- `src/App.test.js` is the default CRA test and fails. The page title is still "React App".
+- The 2020 dependency tree reports a couple of hundred `npm audit` advisories. Fine for local viewing, not for deployment.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## What I'd do differently now
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Get one page working end to end, with a test, before adding the next one.
+- Keep data behind a small API from the start, even a JSON file served locally.
+- Fix lint warnings and console errors as I go; most of these bugs show up there.
