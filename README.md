@@ -4,7 +4,7 @@ A small React grocery storefront: a product catalog with quantity pickers, a to-
 
 ## Context
 
-I built this in September 2020 while learning React in a class; the commit messages ("assinment 2", "session 4", "review") follow the sessions. The earlier snapshot in [FSDI-108](https://github.com/mesaye85/FSDI-108) shows where it started. Despite the repo name, it has no inventory management.
+I built this in September 2020 while learning React in a class; the commit messages ("assinment 2", "session 4", "review") follow the sessions. Despite the repo name, it has no inventory management.
 
 ## Stack
 
